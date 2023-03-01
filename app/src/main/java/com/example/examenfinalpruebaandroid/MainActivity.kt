@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    fun clearFocus() {
+    private fun clearFocus() {
         binding.etUrl.setText("");
     }
 
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun addMultimedia(url: UrlEntity) = runBlocking {
+    private fun addMultimedia(url: UrlEntity) = runBlocking {
         launch {
             val id = ReproductorApp.database.urlDao().addUrl(url)
             val recoveryUrl = ReproductorApp.database.urlDao().getUrlById(id)
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    fun deleteMultimedia(url: UrlEntity) = runBlocking {
+    private fun deleteMultimedia(url: UrlEntity) = runBlocking {
         launch {
             ReproductorApp.database.urlDao().deleteUrl(url)
             urls.remove(url)
